@@ -40,3 +40,8 @@ D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\
 D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
 D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Persistence.dll
 D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Persistence.pdb
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\FluentValidation.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Infrastructure.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Infrastructure.pdb
