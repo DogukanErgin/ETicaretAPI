@@ -41,22 +41,24 @@ namespace ETicaretAPI.Persistent.Repositories
         public bool Remove(T model)
         {
             EntityEntry<T> entityEntry =Table.Remove(model);
-            SaveAsync();
+//            SaveAsync();
             return entityEntry.State == EntityState.Deleted;
         }
 
-        public async Task<bool> RemoveAsync(string id) //asenkron çünkü
+        public async Task<bool> RemoveAsync(string id) 
         {
-            var query = Table.AsQueryable();
-            T model = await query.FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
-            if (model != null)
-                Remove(model); //üstteki remove fonksiyonumuz
-            await SaveAsync();
-            if (model == null)
-                return false;
+            //var query = Table.AsQueryable();
+            //T model = await query.FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+            //if (model != null)
+            //    Remove(model); //üstteki remove fonksiyonumuz
+            //await SaveAsync();
+            //if (model == null)
+            //    return false;
 
-            else
-                return true;
+            //else
+            //    return true;
+            T model = await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
+            return Remove(model);
         }
 
         public bool RemoveRange(List<T> models)

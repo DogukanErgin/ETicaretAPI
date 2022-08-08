@@ -20,7 +20,7 @@ namespace ETicaretAPI.Persistent
         public static void AddPersistanceServices(this IServiceCollection services) //IoC konteynıra ekleme IserviceCollection 
         {
            
-            services.AddSingleton<IProductService,ProductService>(); //repostiory pattern olmayan hal
+           // services.AddSingleton<IProductService,ProductService>(); 
             services.AddDbContext<ETicaretAPIDbContext>(options=>options.UseNpgsql(Configuration.ConnectionString));  
             services.AddScoped<ICostumerReadRepository, CostumerReadRepository>();
             services.AddScoped<ICostumerWriteRepository, CostumerWriteRepository>();
