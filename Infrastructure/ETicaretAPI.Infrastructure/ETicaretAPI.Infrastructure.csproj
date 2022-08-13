@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <Folder Include="Concretes\Storage\AWS\" />
+    <Folder Include="Concretes\Storage\Azure\" />
   </ItemGroup>
 
 </Project>
