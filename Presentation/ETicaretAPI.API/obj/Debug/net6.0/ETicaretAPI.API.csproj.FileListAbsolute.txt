@@ -46,3 +46,9 @@ D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\
 D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Infrastructure.dll
 D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.Infrastructure.pdb
 D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.API.staticwebassets.runtime.json
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Azure.Core.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Azure.Storage.Common.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\System.IO.Hashing.dll
+D:\yazılım\ETicaret\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\System.Memory.Data.dll
