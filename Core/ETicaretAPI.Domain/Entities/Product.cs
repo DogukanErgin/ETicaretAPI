@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace ETicaretAPI.Domain.Entities
 {
-    public class Product:BaseEntity
+    public class Product : BaseEntity
     {
         public string Name { get; set; }
-        public int  Stock { get; set; }
+        public int Stock { get; set; }
         public float Price { get; set; }
         public ICollection<Order> Orders { get; set; }
+        public ICollection<ProductImageFile> productImageFiles { get; set; }
     }
 }

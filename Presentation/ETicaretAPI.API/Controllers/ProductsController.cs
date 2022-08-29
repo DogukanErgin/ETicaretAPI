@@ -17,7 +17,7 @@ namespace ETicaretAPI.API.Controllers
     public class ProductsController : ControllerBase
     {
 
-      //  private readonly IProductService _productService;
+        //  private readonly IProductService _productService;
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IProductReadRepository _productReadRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -47,19 +47,19 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult>  ProductsGet([FromQuery]Pagination pagination)
+        public async Task<IActionResult> ProductsGet([FromQuery] Pagination pagination)
         {
             var totalCount = _productReadRepository.GetAll().Count();
-            var products =  _productReadRepository.GetAll(false).Select(p => new
+            var products = _productReadRepository.GetAll(false).Select(p => new
             {
-                p.Id,   
+                p.Id,
                 p.Name,
                 p.Stock,
                 p.Price,
                 p.CreatedDate,
                 p.UpdatedDate
-            }).Skip(pagination.Size*pagination.Page).Take(pagination.Size).ToList();
-            return  Ok(new
+            }).Skip(pagination.Size * pagination.Page).Take(pagination.Size).ToList();
+            return Ok(new
             {
                 products,
                 totalCount
@@ -68,16 +68,17 @@ namespace ETicaretAPI.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> ProductGet(string id)
         {
-            Product product = await _productReadRepository.GetByIdAsync(id,false);
+            Product product = await _productReadRepository.GetByIdAsync(id, false);
             return Ok(product);
         }
         [HttpPost]
-          public async Task<IActionResult> ProductsPost(VM_Create_Product model) 
+        public async Task<IActionResult> ProductsPost(VM_Create_Product model)
         {
-          await _productWriteRepository.AddAsync(new(){
+            await _productWriteRepository.AddAsync(new()
+            {
                 Name = model.Name,
-                Price=model.Price,
-                Stock=model.Stock
+                Price = model.Price,
+                Stock = model.Stock
             });
             await _productWriteRepository.SaveAsync();
             return StatusCode((int)HttpStatusCode.Created);
@@ -89,8 +90,8 @@ namespace ETicaretAPI.API.Controllers
         [HttpPut]
         public async Task<IActionResult> ProductsPut(VM_Update_Product model) //parametre entity ile karşılanmaz test amaçlı, ilerde döneceğim
         {
-            Product product= await _productReadRepository.GetByIdAsync(model.Id);
-            product.Name=model.Name;
+            Product product = await _productReadRepository.GetByIdAsync(model.Id);
+            product.Name = model.Name;
             product.Price = model.Price;
             product.Stock = model.Stock;
             await _productWriteRepository.SaveAsync();
@@ -101,16 +102,27 @@ namespace ETicaretAPI.API.Controllers
         {
 
             await _productWriteRepository.RemoveAsync(id);
-           await _productWriteRepository.SaveAsync();
-          
+            await _productWriteRepository.SaveAsync();
+
             return Ok();
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload()
+        public async Task<IActionResult> Upload(string id)
         {
 
-        var datas=    await _storageService.UploadAsync("resource/files",Request.Form.Files);
-            await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile() { FileName = d.fileName, Path = d.path,Storage="Local" }).ToList());
+            var datas = await _storageService.UploadAsync("resource/files", Request.Form.Files);
+
+            Product product = await _productReadRepository.GetByIdAsync(id);
+
+            await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile()
+            {
+                FileName = d.fileName,
+                Path = d.path,
+                Storage = _storageService.StorageName,
+                Products=new List<Product>() { product}
+
+            })
+                .ToList());
 
             // var datas= await _fileService.UploadAsync("resource/product-images",Request.Form.Files);
 
