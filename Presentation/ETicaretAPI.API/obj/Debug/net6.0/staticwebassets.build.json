@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "U/ecbsvlbPythE0vVxzCzrZB3gbkBATnI635NZASDTQ=",
+  "Hash": "uyMUyRdaFAUA895AH2Y68kBEvve8+SsvKt2Eskmo6x0=",
   "Source": "ETicaretAPI.API",
   "BasePath": "_content/ETicaretAPI.API",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\yazılım\\ETicaret\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\resource\\files\\Folder.jpg",
+      "SourceId": "ETicaretAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\yazılım\\ETicaret\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\",
+      "BasePath": "_content/ETicaretAPI.API",
+      "RelativePath": "resource/files/Folder.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resource\\files\\Folder.jpg"
+    },
     {
       "Identity": "D:\\yazılım\\ETicaret\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\resource\\files\\icons8-edit-24.png",
       "SourceId": "ETicaretAPI.API",
