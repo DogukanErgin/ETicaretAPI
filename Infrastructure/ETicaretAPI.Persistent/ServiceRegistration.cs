@@ -1,6 +1,7 @@
 ﻿using ETicaretAPI.Application.Abstractions;
 using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Application.Repositories.File;
+using ETicaretAPI.Domain.Entities.Identity;
 using ETicaretAPI.Persistence.Repositories;
 using ETicaretAPI.Persistent.Concretes;
 using ETicaretAPI.Persistent.Contexts;
@@ -23,7 +24,8 @@ namespace ETicaretAPI.Persistent
         {
            
            // services.AddSingleton<IProductService,ProductService>(); 
-            services.AddDbContext<ETicaretAPIDbContext>(options=>options.UseNpgsql(Configuration.ConnectionString));  
+            services.AddDbContext<ETicaretAPIDbContext>(options=>options.UseNpgsql(Configuration.ConnectionString));
+            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<ETicaretAPIDbContext>();
             services.AddScoped<ICostumerReadRepository, CostumerReadRepository>();
             services.AddScoped<ICostumerWriteRepository, CostumerWriteRepository>();
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();
