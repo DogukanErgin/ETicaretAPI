@@ -38,11 +38,20 @@ namespace ETicaretAPI.Application.Features.Commands.AppUser.LoginUser
             if (result.Succeeded)
             {
                 Token token = _tokenHandler.CreateAccessToken(5);
+
+                return new LoginUserSuccessCommandResponse() { 
+                Token= token
+                };
+
             }
-            return new LoginUserErrorCommandResponse()
-            {
-                Message = "Kimlik doğrulama hatası"
-            };
+            else {
+
+                return new LoginUserErrorCommandResponse()
+                {
+                    Message = "Kimlik doğrulama hatası"
+                };
+            }
+
         }
     }
 }
