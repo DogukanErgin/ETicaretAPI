@@ -1,5 +1,7 @@
-﻿using ETicaretAPI.Application.Abstractions.Token;
+﻿using ETicaretAPI.Application.Abstractions.Services.Authentications;
+using ETicaretAPI.Application.Abstractions.Token;
 using ETicaretAPI.Application.DTOs;
+using ETicaretAPI.Application.DTOs.Authentication.InternalAuthentication;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -12,46 +14,28 @@ namespace ETicaretAPI.Application.Features.Commands.AppUser.LoginUser
 {
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommandRequest, LoginUserCommandResponse>
     {
-        private readonly SignInManager<Domain.Entities.Identity.AppUser> _signInManager;
-        private readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
-        private readonly ITokenHandler _tokenHandler;
+        readonly IInternalAuthentication _authService;
 
-        public LoginUserCommandHandler(ITokenHandler tokenHandler, SignInManager<Domain.Entities.Identity.AppUser> signInManager, UserManager<Domain.Entities.Identity.AppUser> userManager)
+        public LoginUserCommandHandler(IInternalAuthentication authService)
         {
-            _tokenHandler = tokenHandler;
-            _signInManager = signInManager;
-            _userManager = userManager;
+            _authService = authService;
         }
 
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Identity.AppUser user = await _userManager.FindByNameAsync(request.UserNameOrEmail);
-            if(user==null)
-               user = await _userManager.FindByEmailAsync(request.UserNameOrEmail);
-            if (user == null)
-                return new LoginUserErrorCommandResponse() { 
-                Message="Kullanıcı adı veya şifre hatalı"
-                };
-
-            SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-
-            if (result.Succeeded)
+           var token = await _authService.LoginAsync(new()
             {
-                Token token = _tokenHandler.CreateAccessToken(5);
+                Password = request.Password,
+                UserNameOrEmail = request.UserNameOrEmail,
+                
+            });
+           
+         
+            return new LoginUserSuccessCommandResponse()
+            {
 
-                return new LoginUserSuccessCommandResponse() { 
-                Token= token
-                };
-
-            }
-            else {
-
-                return new LoginUserErrorCommandResponse()
-                {
-                    Message = "Kimlik doğrulama hatası"
-                };
-            }
-
+                Token = token.token
+            };
         }
     }
 }

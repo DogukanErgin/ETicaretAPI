@@ -1267,10 +1267,10 @@
           "FluentValidation": "11.1.0",
           "FluentValidation.AspNetCore": "11.1.2",
           "FluentValidation.DependencyInjectionExtensions": "11.1.0",
-          "Google.Apis.Auth": "1.57.0",
           "MediatR": "10.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
           "Microsoft.EntityFrameworkCore": "6.0.6",
+          "Newtonsoft.Json": "13.0.1",
           "System.Linq.Expressions": "4.3.0"
         },
         "compile": {
@@ -4141,6 +4141,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "ETicaretAPI.Application >= 1.0.0",
+      "Google.Apis.Auth >= 1.57.0",
       "Microsoft.EntityFrameworkCore >= 6.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.6",
       "Microsoft.Extensions.Configuration >= 6.0.1",
@@ -4197,6 +4198,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Google.Apis.Auth": {
+            "target": "Package",
+            "version": "[1.57.0, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.6, )"
@@ -4239,7 +4244,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,6 +1,8 @@
-﻿using ETicaretAPI.Application.Abstractions.Token;
+﻿using ETicaretAPI.Application.Abstractions.Services.Authentication;
+using ETicaretAPI.Application.Abstractions.Services.Authentications;
+using ETicaretAPI.Application.Abstractions.Token;
 using ETicaretAPI.Application.DTOs;
-using Google.Apis.Auth;
+using ETicaretAPI.Application.DTOs.Authentication.ExternalAuthentication;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -13,57 +15,24 @@ namespace ETicaretAPI.Application.Features.Commands.AppUser.GoogleLogin
 {
     public class GoogleLoginCommandHandler : IRequestHandler<GoogleLoginCommandRequest, GoogleLoginCommandResponse>
     {
-        readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
-        readonly ITokenHandler _tokenHandler;
+        
+        readonly IExternalAuthentication _authService;
 
-        public GoogleLoginCommandHandler(UserManager<Domain.Entities.Identity.AppUser> userManager, ITokenHandler tokenHandler)
+        public GoogleLoginCommandHandler(IExternalAuthentication authService)
         {
-            _userManager = userManager;
-            _tokenHandler = tokenHandler;
+            
+            _authService = authService;
         }
 
         public async Task<GoogleLoginCommandResponse> Handle(GoogleLoginCommandRequest request, CancellationToken cancellationToken)
         {
-            var settings = new GoogleJsonWebSignature.ValidationSettings()
+            GoogleLoginResponse response= await _authService.GoogleLoginAsync(new()
             {
-                Audience = new List<string> { ""}
-            };
-
-            var payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken,settings);
-
-            var info = new UserLoginInfo(request.Provider,payload.Subject,request.Provider);
-
-            Domain.Entities.Identity.AppUser user = await _userManager.FindByLoginAsync(info.LoginProvider,info.ProviderKey);
-
-            bool result = user != null;
-            if(user==null)
-            {
-                user = await _userManager.FindByEmailAsync(payload.Email);
-                if (user==null)
-                {
-                    user = new()
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        Email = payload.Email,
-                        UserName = payload.Email,
-                        NameSurname = payload.Name
-                    };
-                    var identityResult = await _userManager.CreateAsync(user);
-
-                    result = identityResult.Succeeded;
-                }
-            }
-            if (result)
-                await _userManager.AddLoginAsync(user,info);
-            else
-            
-                throw new Exception("Geçersiz yetkilendirme");
-
-
-            Token token = _tokenHandler.CreateAccessToken(5);
-            return new()
-            {
-                Token = token
+                IdToken=request.IdToken,
+                Provider=request.Provider
+            });
+            return new() {
+            Token=response.Token
             };
         }
     }
