@@ -1,0 +1,12 @@
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.SignalR.deps.json
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.SignalR.dll
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.SignalR.pdb
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.csproj.AssemblyReference.cache
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.GeneratedMSBuildEditorConfig.editorconfig
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.AssemblyInfoInputs.cache
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.AssemblyInfo.cs
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.csproj.CoreCompileInputs.cache
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.dll
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\refint\ETicaretAPI.SignalR.dll
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.pdb
+D:\yazılım\ETicaret\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ref\ETicaretAPI.SignalR.dll

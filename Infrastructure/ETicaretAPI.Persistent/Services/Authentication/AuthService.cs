@@ -26,8 +26,8 @@ namespace ETicaretAPI.Persistence.Services.Authentication
         readonly SignInManager<Domain.Entities.Identity.AppUser> _signInManager;
         readonly IUserService _userService;
 
-        int accessTokenLifeTime = 20;
-        int refreshTokenLifeTime = 7;
+        int accessTokenLifeTime = 900;
+        int refreshTokenLifeTime = 500;
 
         public AuthService(ITokenHandler tokenHandler, UserManager<Domain.Entities.Identity.AppUser> userManager, IConfiguration configuration, SignInManager<Domain.Entities.Identity.AppUser> signInManager, IUserService userService)
         {
