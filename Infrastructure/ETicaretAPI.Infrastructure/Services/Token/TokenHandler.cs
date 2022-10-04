@@ -1,4 +1,5 @@
 ﻿using ETicaretAPI.Application.Abstractions.Token;
+using ETicaretAPI.Domain.Entities.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -21,7 +22,7 @@ namespace ETicaretAPI.Infrastructure.Concretes.Token
         }
 
 
-        public Application.DTOs.Token CreateAccessToken(int second)
+        public Application.DTOs.Token CreateAccessToken(int second,AppUser appuser)
         {
             Application.DTOs.Token token = new();
 

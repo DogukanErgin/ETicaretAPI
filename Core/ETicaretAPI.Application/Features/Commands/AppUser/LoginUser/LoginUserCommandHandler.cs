@@ -29,13 +29,21 @@ namespace ETicaretAPI.Application.Features.Commands.AppUser.LoginUser
                 UserNameOrEmail = request.UserNameOrEmail,
                 
             });
-           
-         
-            return new LoginUserSuccessCommandResponse()
-            {
 
-                Token = token.token
-            };
+            if (token!=null) {
+                return new LoginUserSuccessCommandResponse()
+                {
+
+                    Token = token.token
+                };
+            }
+            else
+            {
+                return new LoginUserErrorCommandResponse()
+                {
+                    Message = "Kullanıcı adı veya şifre hatalı"
+                };
+            }
         }
     }
 }

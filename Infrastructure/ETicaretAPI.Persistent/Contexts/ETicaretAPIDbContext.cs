@@ -24,7 +24,8 @@ namespace ETicaretAPI.Persistent.Contexts
 
         public DbSet<ProductImageFile> ProductImageFiles { get; set; }
         public DbSet<InvoiceFile> InvoiceFiles { get; set; }
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public override async Task<int> SaveChangesAsync(CancellationToken
+            cancellationToken = default)
         {
             var datas= ChangeTracker.Entries<BaseEntity>();
 

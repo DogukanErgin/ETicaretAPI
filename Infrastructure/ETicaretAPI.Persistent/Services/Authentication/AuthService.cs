@@ -76,7 +76,7 @@ namespace ETicaretAPI.Persistence.Services.Authentication
                 throw new Exception("Geçersiz yetkilendirme");
 
 
-            Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime);
+            Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime,user);
             await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, refreshTokenLifeTime);
             return new()
             {
@@ -88,17 +88,18 @@ namespace ETicaretAPI.Persistence.Services.Authentication
         {
             {
                 Domain.Entities.Identity.AppUser user = await _userManager.FindByNameAsync(model.UserNameOrEmail);
+
                 if (user == null)
                     user = await _userManager.FindByEmailAsync(model.UserNameOrEmail);
 
                 if (user == null)
-                    throw new Exception();
+                    return null;
 
                 SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
                 if (result.Succeeded) //Authentication başarılı!
                 {
 
-                    Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime);
+                    Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime, user);
                     await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, refreshTokenLifeTime);
                     return new()
                     {
@@ -117,14 +118,14 @@ namespace ETicaretAPI.Persistence.Services.Authentication
             if (user != null && user?.RefreshTokenEndDate > DateTime.UtcNow)
             {
 
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime);
+                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime,user);
 
                 await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, refreshTokenLifeTime);
 
                 return token;
             }
             else
-                throw Exception();
+                throw new Exception();
         }
     }
 }
