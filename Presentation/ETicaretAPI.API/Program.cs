@@ -22,6 +22,7 @@ using Serilog.Sinks.PostgreSQL;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddPersistanceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();

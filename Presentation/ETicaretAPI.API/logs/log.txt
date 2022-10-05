@@ -49579,3 +49579,69 @@ Upgrade: websocket
 Vary: [Redacted]
 Sec-WebSocket-Accept: [Redacted]
 2022-10-05 02:45:14.513 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7218/products-hub?id=QEDlHlBrsolty5vwiFuwXA - - - 101 - - 12056.0828ms
+2022-10-05 13:26:32.097 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 13:30:54.821 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 13:31:49.664 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 13:31:49.968 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
+2022-10-05 13:31:49.988 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
+2022-10-05 13:31:50.002 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2022-10-05 13:31:50.028 +03:00 [INF] Applying migration '20221005103055_mig_12'.
+2022-10-05 13:31:50.123 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Baskets" (
+    "Id" uuid NOT NULL,
+    "UserId" text NOT NULL,
+    "CreatedDate" timestamp with time zone NOT NULL,
+    "UpdatedDate" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_Baskets" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_Baskets_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2022-10-05 13:31:50.138 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "BasketsItems" (
+    "Id" uuid NOT NULL,
+    "BasketId" uuid NOT NULL,
+    "ProductId" uuid NOT NULL,
+    "Quantity" integer NOT NULL,
+    "CreatedDate" timestamp with time zone NOT NULL,
+    "UpdatedDate" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_BasketsItems" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_BasketsItems_Baskets_BasketId" FOREIGN KEY ("BasketId") REFERENCES "Baskets" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_BasketsItems_Products_ProductId" FOREIGN KEY ("ProductId") REFERENCES "Products" ("Id") ON DELETE CASCADE
+);
+2022-10-05 13:31:50.144 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Baskets_UserId" ON "Baskets" ("UserId");
+2022-10-05 13:31:50.149 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_BasketsItems_BasketId" ON "BasketsItems" ("BasketId");
+2022-10-05 13:31:50.159 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_BasketsItems_ProductId" ON "BasketsItems" ("ProductId");
+2022-10-05 13:31:50.162 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20221005103055_mig_12', '6.0.6');
+2022-10-05 14:44:17.032 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 14:45:02.418 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 14:45:02.733 +03:00 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
+2022-10-05 14:45:02.747 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2022-10-05 14:47:09.778 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 14:47:54.232 +03:00 [INF] Entity Framework Core 6.0.6 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.5+9d79af6e2586d5d28da253ac075706a5575a1743' with options: None
+2022-10-05 14:47:54.564 +03:00 [INF] Executed DbCommand (63ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
+2022-10-05 14:47:54.592 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
+2022-10-05 14:47:54.608 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2022-10-05 14:47:54.633 +03:00 [INF] Applying migration '20221005114710_mig_13'.
+2022-10-05 14:47:54.704 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Orders" ADD CONSTRAINT "FK_Orders_Baskets_Id" FOREIGN KEY ("Id") REFERENCES "Baskets" ("Id") ON DELETE CASCADE;
+2022-10-05 14:47:54.707 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20221005114710_mig_13', '6.0.6');
